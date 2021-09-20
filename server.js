@@ -38,7 +38,9 @@ app.get("/", (req, res) => {
   res.send(5555);
 });
 
-server.listen(5000, () => {
+const PORT = process.env.PORT || 5000;
+
+server.listen(PORT, () => {
   try {
     console.log("Сервер запущен...");
   } catch (err) {
