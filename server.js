@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 
-require("dotenv").config()
+require("dotenv").config();
 const app = express();
 
 const SocketService = require("./utils/socketService");
@@ -15,6 +15,7 @@ const server = http.createServer(app);
 // });
 
 const connectDB = require("./utils/connectDB");
+const { send } = require("./controllers/message");
 // const messagebird = require('messagebird')('ICOFjxyEoa03WkeDAvtPg4NzC')
 
 connectDB();
@@ -32,6 +33,10 @@ app.use("/api/messages", require("./routes/message"));
 app.use("/api/files", require("./routes/file"));
 
 app.set("socketService", new SocketService(server));
+
+app.get("/", (req, res) => {
+  res.send(5555);
+});
 
 server.listen(5000, () => {
   try {
