@@ -1,0 +1,10 @@
+{
+    "SMS": {
+        "LOGIN": "sms0005ts",
+        "PASSWORD": "YsBDs17k",
+        "CGPN": 1490,
+        "URL": "http://sms.etc.uz:8084/json2sms"
+    },
+    "MONGO_URI": "mongodb+srv://bsmiapp:bsmi2021@cluster0.ehlcy.mongodb.net/statement_db?retryWrites=true&w=majority",
+    "JWT_SECRET_TOKEN": "6%@faV@%^12d"
+}
