@@ -16,16 +16,16 @@ module.exports = {
         $or: [{ phone: req.body.recipient }, { email: req.body.email }],
       });
 
-      // if (user) {
-      //   return res.status(400).json({
-      //     error:
-      //       "Пользователь с такой электронной почтой или телефонным номером существует. Войдите в аккаунт чтобы продолжть",
-      //   });
-      // }
+      if (user) {
+        return res.status(400).json({
+          error:
+            "Пользователь с такой электронной почтой или телефонным номером существует. Войдите в аккаунт чтобы продолжить",
+        });
+      }
 
-      // const newFile = new File({
-      //   name: req.files,
-      // });
+      const newFile = new File({
+        name: req.files,
+      });
 
       crypto.randomBytes(3, async function (err, buffer) {
         const num_6d = parseInt(buffer.toString("hex"), 16)
@@ -140,14 +140,14 @@ module.exports = {
     try {
       let user = await User.findOne({ email });
 
-      if (!user) {
-        user = new User({
-          name,
-          email,
-          address,
-          phone: recipient,
-        });
-      }
+      // if (!user) {
+      //   user = new User({
+      //     name,
+      //     email,
+      //     address,
+      //     phone: recipient,
+      //   });
+      // }
 
       const files = [];
 
