@@ -50,15 +50,15 @@ module.exports = {
 
       req.app.get("socketService").emiter("message:new", user.phone, message);
 
-      const response = await fetch(process.env.SMS.URL, {
+      const response = await fetch(process.env.URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          login: process.env.SMS.LOGIN,
-          pwd: process.env.SMS.PASSWORD,
-          CgPN: process.env.SMS.CGPN,
+          login: process.env.LOGIN,
+          pwd: process.env.PASSWORD,
+          CgPN: process.env.CGPN,
           CdPN: user.phone,
           text: `
 На ваше заявление ответили.
