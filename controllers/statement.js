@@ -13,6 +13,10 @@ module.exports = {
     try {
       let user = await User.findOne({ _id: req.user.userId });
 
+      if(req.user.userId == leader){
+        return res.status(400).json({error: "Не правильный запрос!"})
+      }
+
       const files = [];
 
       if (req.files) {
