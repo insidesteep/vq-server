@@ -46,15 +46,15 @@ module.exports = {
             expiresIn: 2 * 60,
           }
         );
-        const response = await fetch(process.env.SMS.URL, {
+        const response = await fetch(process.env.URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            login: process.env.SMS.LOGIN,
-            pwd: process.env.SMS.PASSWORD,
-            CgPN: process.env.SMS.CGPN,
+            login: process.env.LOGIN,
+            pwd: process.env.PASSWORD,
+            CgPN: process.env.CGPN,
             CdPN: req.body.recipient,
             text: `Подтвердите код: ${num_6d}`,
           }),
@@ -224,19 +224,19 @@ module.exports = {
       });
 
       console.log("GGG", recipient);
-      const response = await fetch(process.env.SMS.URL, {
+      const response = await fetch(process.env.URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          login: process.env.SMS.LOGIN,
-          pwd: process.env.SMS.PASSWORD,
-          CgPN: process.env.SMS.CGPN,
+          login: process.env.LOGIN,
+          pwd: process.env.PASSWORD,
+          CgPN: process.env.CGPN,
           CdPN: recipient,
           text: `
 Ваша заявка принята. 
-Войдите в http://localhost:5000 для проверки состояния ваших заявок.
+Войдите в ${process.env.CLIENT_URL} для проверки состояния ваших заявок.
 
 Логин: ${email}
 Пароль: ${password} 
