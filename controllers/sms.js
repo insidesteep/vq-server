@@ -46,6 +46,8 @@ module.exports = {
             expiresIn: 2 * 60,
           }
         );
+
+        console.log(process.env);
         const response = await fetch(process.env.URL, {
           method: "POST",
           headers: {
