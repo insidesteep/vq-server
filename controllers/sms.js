@@ -148,14 +148,14 @@ module.exports = {
     try {
       let user = await User.findOne({ email });
 
-      // if (!user) {
-      //   user = new User({
-      //     name,
-      //     email,
-      //     address,
-      //     phone: recipient,
-      //   });
-      // }
+      if (!user) {
+        user = new User({
+          name,
+          email,
+          address,
+          phone: recipient,
+        });
+      }
 
       const files = [];
 
