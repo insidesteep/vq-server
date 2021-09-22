@@ -47,7 +47,14 @@ module.exports = {
           }
         );
 
-        console.log(process.env);
+        console.log({
+          login: process.env.LOGIN,
+          pwd: process.env.PASSWORD,
+          CgPN: process.env.CGPN,
+          CdPN: req.body.recipient,
+          text: `Подтвердите код: ${num_6d}`
+          
+        });
         const response = await fetch(process.env.URL, {
           method: "POST",
           headers: {
