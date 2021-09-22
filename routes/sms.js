@@ -11,7 +11,7 @@ const upload = require("../middlewares/upload");
 const sms = require("../middlewares/sms");
 
 const router = Router();
-const { verify, sendSms } = require("../controllers/sms");
+const { verify, sendCode } = require("../controllers/sms");
 
 router.post(
   "/verify",
@@ -36,6 +36,6 @@ router.post(
   verify
 );
 
-router.post("/send-sms", sms, sendSms);
+router.post("/send-code", sms, sendCode);
 
 module.exports = router;
