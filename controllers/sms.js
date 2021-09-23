@@ -256,7 +256,7 @@ module.exports = {
         return res.status(401).json({ error: result.query_state });
       }
 
-      res.status(201).send("ok");
+      res.status(201).json({ message: "Заявление отправлено" });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ error: err.message });
