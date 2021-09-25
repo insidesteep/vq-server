@@ -159,7 +159,7 @@ module.exports = {
         status: "new",
       }).populate("owner", "name");
 
-      res.json({ newStatements });
+      res.json(newStatements);
     } catch (err) {
       res.status(500).json({ error: err.message });
     }

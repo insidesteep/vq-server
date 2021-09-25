@@ -13,6 +13,7 @@ const {
   statementById,
   getUserStatement,
   getMyStatements,
+  getNewStatements
 } = require("../controllers/statement");
 
 router.post(
@@ -38,5 +39,7 @@ router.get("/my", auth, getMyStatements);
 router.get("/my/:id", auth, getUserStatement);
 
 router.get("/:id", auth, statementById);
+
+router.get("/new", auth, getNewStatements);
 
 module.exports = router;
