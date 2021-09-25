@@ -154,7 +154,7 @@ module.exports = {
   },
   getNewStatements: async (req, res) => {
     try {
-      const newStatements = await Statements({
+      const newStatements = await Statement.find({
         responsiblePerson: req.user.userId,
         status: "new",
       }).populate("owner", "name");
