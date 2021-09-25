@@ -96,6 +96,9 @@ module.exports = {
         .populate("statement", "theme")
         .populate("owner", "name email");
 
+      message.unread = false;
+      await message.save()
+
       res.json(message);
     } catch (err) {
       return res.status(500).json({ error: err.message });

@@ -11,7 +11,6 @@ module.exports = {
       "statements"
     );
 
-    console.log("wdwdw");
     let pendingQauntity = user.statements.filter(
       (st) => st.status === "pending"
     ).length;

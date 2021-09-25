@@ -18,9 +18,9 @@ const messageSchema = new Schema(
       type: String,
       require: true,
     },
-    readed: {
+    unread: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   {
