@@ -13,8 +13,8 @@ module.exports = {
     try {
       let user = await User.findOne({ _id: req.user.userId });
 
-      if(req.user.userId == req.body.leader){
-        return res.status(400).json({error: "Не правильный запрос!"})
+      if (req.user.userId == req.body.leader) {
+        return res.status(400).json({ error: "Не правильный запрос!" });
       }
 
       const files = [];
@@ -148,6 +148,18 @@ module.exports = {
       await statement.save();
 
       res.json({ statement });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  },
+  getNewStatements: async (req, res) => {
+    try {
+      const newStatements = await Statements({
+        responsiblePerson: req.user.userId,
+        status: "new",
+      }).populate("owner", "name");
+
+      res.json({ newStatements });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }

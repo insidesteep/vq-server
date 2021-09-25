@@ -2,7 +2,12 @@ const { body } = require("express-validator");
 
 const { Router } = require("express");
 
-const { send, getMessages, getMessageById } = require("../controllers/message");
+const {
+  send,
+  getMessages,
+  getMessageById,
+  getNewMessages,
+} = require("../controllers/message");
 const auth = require("../middlewares/auth");
 const validator = require("../middlewares/validator");
 
@@ -29,5 +34,7 @@ router.post(
 router.get("/", auth, getMessages);
 
 router.get("/:id", auth, getMessageById);
+
+router.get("/new", auth, getNewMessages);
 
 module.exports = router;

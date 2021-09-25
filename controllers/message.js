@@ -90,6 +90,18 @@ module.exports = {
       return res.status(500).json({ error: err.message });
     }
   },
+  getNewMessages: async (req, res) => {
+    try {
+      const messages = await Message.find({ to: req.user.userId, unread: true })
+        .sort([["createdAt", "desc"]])
+        .populate("statement", "theme")
+        .populate("owner", "name");
+
+      res.json(messages);
+    } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
+  },
   getMessageById: async (req, res) => {
     try {
       const message = await Message.findOne({ _id: req.params.id })
@@ -97,7 +109,7 @@ module.exports = {
         .populate("owner", "name email");
 
       message.unread = false;
-      await message.save()
+      await message.save();
 
       res.json(message);
     } catch (err) {
