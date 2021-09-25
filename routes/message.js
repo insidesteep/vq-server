@@ -32,9 +32,7 @@ router.post(
 );
 
 router.get("/", auth, getMessages);
-
-router.get("/:id", auth, getMessageById);
-
 router.get("/new", auth, getNewMessages);
+router.get("/:id", auth, getMessageById);
 
 module.exports = router;

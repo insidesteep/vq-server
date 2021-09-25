@@ -132,9 +132,7 @@ module.exports = {
   },
   statementById: async (req, res) => {
     try {
-      const { id } = req.params;
-
-      const statement = await Statement.findById(id)
+      const statement = await Statement.findById(req.statementId)
         .populate({
           path: "owner",
           select: "name email",
@@ -153,12 +151,14 @@ module.exports = {
     }
   },
   getNewStatements: async (req, res) => {
+    console.log("2222");
     try {
+      console.log("bbb");
       const newStatements = await Statement.find({
         responsiblePerson: req.user.userId,
         status: "new",
       }).populate("owner", "name");
-
+      console.log(newStatements);
       res.json(newStatements);
     } catch (err) {
       res.status(500).json({ error: err.message });
