@@ -159,6 +159,7 @@ module.exports = {
 
       const files = [];
 
+
       if (req.data.files) {
         req.data.files.forEach((file) =>
           files.push(
