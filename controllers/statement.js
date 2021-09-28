@@ -132,12 +132,16 @@ module.exports = {
   },
   statementById: async (req, res) => {
     try {
-      const statement = await Statement.findById(req.statementId)
+      const statement = await Statement.findById(req.params.id)
         .populate({
           path: "owner",
           select: "name email",
         })
         .populate("files");
+
+        if(!statement){
+          return res.status(400).json("Заявление не существует!")
+        }
 
       if (statement.status === "new") {
         statement.status = "pending";
