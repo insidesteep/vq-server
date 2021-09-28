@@ -7,9 +7,16 @@ const User = require("../models/user");
 
 module.exports = {
   authorization: async (req, res) => {
+    console.log(req.user.userId);
+
     const user = await User.findOne({ _id: req.user.userId }).populate(
       "statements"
     );
+
+    if(!user){
+      return res.status(400).json({error: "Пользователь не найден!"})
+    }
+
 
     let pendingQauntity = user.statements.filter(
       (st) => st.status === "pending"
@@ -63,7 +70,7 @@ module.exports = {
       if (!user) {
         return res
           .status(400)
-          .json({ error: "Такой пользователь не существует!" });
+          .json({ error: "Пользователь не найден!" });
       }
 
       const validPassword = await bcrypt.compare(password, user.password);
